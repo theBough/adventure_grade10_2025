@@ -5,26 +5,38 @@ function Player(x,y,w,h,col,img){
   this.h = h;
   this.col = col;
   this.img = loadImage(img)
-  this.walk = [
+  this.walkLeft = [
     loadImage("images/playerOne/ltOne.png"),
     loadImage("images/playerOne/ltTwo.png"),
     loadImage("images/playerOne/ltThree.png")
   ]
+  this.walkRight = [
+    loadImage("images/playerOne/rtOne.png"),
+    loadImage("images/playerOne/rtTwo_.png"),
+    loadImage("images/playerOne/rtThree_.png")
+  ]
   this.walkCycle = 0;
-
-  
   this.update = function(){
     //looking for left arrow press
     if(keyIsDown(37)){
       this.x -=1
        this.animateLeft();
+    }else if(keyIsDown(39)){
+       this.x +=1
+       this.animateRight();
     }
   }
-  
+  //This function will cycle through the walking left pictures of player.
+  this.animateRight  =function(){
+    if(frameCount %10 == 0){
+       this.img = this.walkRight[this.walkCycle];
+      this.walkCycle = (this.walkCycle + 1) %3
+    }
+  }
   //This function will cycle through the walking left pictures of player.
   this.animateLeft  =function(){
     if(frameCount %10 == 0){
-       this.img = this.walk[this.walkCycle];
+       this.img = this.walkLeft[this.walkCycle];
       this.walkCycle = (this.walkCycle + 1) %3
     }
   }
