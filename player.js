@@ -24,6 +24,7 @@ function Player(x,y,w,h,col,img){
     }else if(keyIsDown(39)){
        this.x +=1
        this.animateRight();
+        
     }
   }
   //This function will cycle through the walking left pictures of player.
