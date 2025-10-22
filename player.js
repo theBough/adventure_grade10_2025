@@ -1,4 +1,5 @@
 function Player(x,y,w,h,col,img){
+  
   this.x = x;
   this.y  =y;
   this.w = w;
@@ -15,17 +16,39 @@ function Player(x,y,w,h,col,img){
     loadImage("images/playerOne/rtTwo_.png"),
     loadImage("images/playerOne/rtThree_.png")
   ]
+  this.standLeft = loadImage("images/playerOne/standLeft.png")
+  this.standRight = loadImage("images/playerOne/standRight.png")
   this.walkCycle = 0;
+  this.direction = "left"
+  //*************************************************
   this.update = function(){
     //looking for left arrow press
     if(keyIsDown(37)){
       this.x -=1
+      this.direction = "left"
        this.animateLeft();
     }else if(keyIsDown(39)){
        this.x +=1
-       this.animateRight();
-        
+      this.direction = "right"
+       this.animateRight();  
+    }else if(keyIsDown(38)){
+      this.y -=1
+      //animate Up
+    }else if(keyIsDown(40)){
+      this.y += 1;
+      //animate Down
+      
+    }else{
+      this.standStill();
     }
+  }
+  this.standStill  = function(){
+    if( this.direction == "left"){
+      this.img = this.standLeft
+    }else{
+      this.img = this.standRight
+    }
+    
   }
   //This function will cycle through the walking left pictures of player.
   this.animateRight  =function(){
@@ -41,7 +64,6 @@ function Player(x,y,w,h,col,img){
       this.walkCycle = (this.walkCycle + 1) %3
     }
   }
-  
   this.display = function(){
     fill(this.col)
     //rect(this.x, this.y, this.w, this.h)
