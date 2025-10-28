@@ -16,6 +16,10 @@ function Player(x,y,w,h,col,img){
     loadImage("images/playerOne/rtTwo_.png"),
     loadImage("images/playerOne/rtThree_.png")
   ]
+  this.walkUp = [
+    loadImage("images/playerOne/climbOne.png"),
+    loadImage("images/playerOne/climbTwo.png")
+  ]
   this.standLeft = loadImage("images/playerOne/standLeft.png")
   this.standRight = loadImage("images/playerOne/standRight.png")
   this.walkCycle = 0;
@@ -33,6 +37,7 @@ function Player(x,y,w,h,col,img){
        this.animateRight();  
     }else if(keyIsDown(38)){
       this.y -=1
+      this.animateUp()
       //animate Up
     }else if(keyIsDown(40)){
       this.y += 1;
@@ -49,6 +54,12 @@ function Player(x,y,w,h,col,img){
       this.img = this.standRight
     }
     
+  }
+   this.animateUp  =function(){
+    if(frameCount %10 == 0){
+       this.img = this.walkUp[this.walkCycle];
+      this.walkCycle = (this.walkCycle + 1) %2
+    }
   }
   //This function will cycle through the walking left pictures of player.
   this.animateRight  =function(){
