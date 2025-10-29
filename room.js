@@ -1,3 +1,9 @@
+function roomChange(){
+  if(p.x < 0 ){
+    p.x = width;
+  }
+}//end RoomChange
+
 function roomOne(){
   w=[];
   w.push(new Wall(0,235,400,20,"red"))
