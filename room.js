@@ -10,10 +10,12 @@ function roomChange(){
   if(p.x + p.w < 0 ){
     //put the player on the right side of the canvas.
     p.x = width;
+    activeColumn -=1;
   }
   if(p.x >width ){
     //put the player on the left side of the canvas.
     p.x = 0;
+    activeColumn +=1;
   }
 }//end RoomChange
 
