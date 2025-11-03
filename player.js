@@ -46,6 +46,8 @@ function Player(x,y,w,h,col,img){
     }else{
       this.standStill();
     }
+    wallCollision()
+    roomChange();
   }
   this.standStill  = function(){
     if( this.direction == "left"){
@@ -57,22 +59,24 @@ function Player(x,y,w,h,col,img){
   }
    this.animateUp  =function(){
     if(frameCount %10 == 0){
-       this.img = this.walkUp[this.walkCycle];
       this.walkCycle = (this.walkCycle + 1) %2
+       this.img = this.walkUp[this.walkCycle];
     }
   }
   //This function will cycle through the walking left pictures of player.
   this.animateRight  =function(){
     if(frameCount %10 == 0){
+       this.walkCycle = (this.walkCycle + 1) %3
        this.img = this.walkRight[this.walkCycle];
-      this.walkCycle = (this.walkCycle + 1) %3
+     
     }
   }
   //This function will cycle through the walking left pictures of player.
   this.animateLeft  =function(){
     if(frameCount %10 == 0){
-       this.img = this.walkLeft[this.walkCycle];
-      this.walkCycle = (this.walkCycle + 1) %3
+      this.walkCycle = (this.walkCycle + 1) %3 
+      this.img = this.walkLeft[this.walkCycle];
+      
     }
   }
   this.display = function(){
