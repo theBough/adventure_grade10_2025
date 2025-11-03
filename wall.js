@@ -1,28 +1,37 @@
-function wallCollision() {
-  for (let i = 0; i < w.length; i++) {
-    const wall = w[i];
-
-    const hitVertical = p.y <= wall.y + wall.h && p.y + p.h >= wall.y;
-    const hitHorizontal = p.x <= wall.x + wall.w && p.x + p.w >= wall.x;
-
-    // Hit left side of wall
-    if (hitVertical && p.x <= wall.x + wall.w && p.x >= wall.x) {
-      p.x += 1;
-    }
-
-    // Hit right side of wall
-    if (hitVertical && p.x + p.w >= wall.x && p.x <= wall.x + wall.w) {
-      p.x -= 1;
-    }
-
-    // Hit bottom side of wall
-    if (hitHorizontal && p.y <= wall.y + wall.h && p.y >= wall.y) {
-      p.y += 1;
-    }
-
-    // Hit top side of wall
-    if (hitHorizontal && p.y + p.h >= wall.y && p.y <= wall.y + wall.h) {
-      p.y -= 1;
-    }
-  }
+function Wall(x,y,w,h,col){
+  this.x = x
+  this.y = y
+  this.w = w
+  this.h = h
+  this.col = col
+  
+  this.display = function(){
+    fill(this.col)
+    rect(this.x, this.y, this.w, this.h)
+  }//end display
 }
+function wallCollision() {
+  for (var i = 0; i < w.length; i++) {
+
+    //check if we hit the left of any wall
+    if (p.y <= w[i].y + w[i].h && p.y + p.h >= w[i].y && p.x <= w[i].x + w[i].w && p.x >= w[i].x) {
+      p.x += 5
+    }
+
+    //check if we hit the right of any wall
+    if (p.y <= w[i].y + w[i].h && p.y + p.h >= w[i].y && p.x + p.w >= w[i].x && p.x <= w[i].x + w[i].w) {
+      p.x -= 5
+    }
+
+
+    if (p.x <= w[i].x + w[i].w && p.x + p.w >= w[i].x && p.y <= w[i].y + w[i].h && p.y >= w[i].y) {
+      p.y += 5;
+    }
+
+    //check if we hit the top of any wall
+    if (p.x <= w[i].x + w[i].w && p.x + p.w >= w[i].x && p.y + p.h >= w[i].y && p.y <= w[i].y + w[i].h) {
+      p.y -= 5;
+    }
+
+  }//end loop
+}//end colision
