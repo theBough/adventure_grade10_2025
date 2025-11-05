@@ -1,7 +1,11 @@
+let bgImageRoomOne
+
 function fillRooms(){
   rooms = [
     [roomOne, roomTwo]
   ]
+  
+  bgImageRoomOne =loadImage("images/maps/megaManMap.jpg")
 }//end function
 
 function roomChange(){
@@ -25,8 +29,10 @@ function roomTwo(){
 }
 function roomOne(){
   w=[];
-  w.push(new Wall(0,235,400,20,"red"))
+  w.push(new Wall(0,235,width,20,"red"))
   w.push(new Wall(0,0,400,20,"red"))
  // w.push(new Wall(0,0,20,400,"pink"))
-  w.push(new Wall(20,20,180,180,"green"))  
+  w.push(new Wall(20,20,180,180,"green"))
+  bgImageRoomOne.resize(width, height)
+ image(bgImageRoomOne,0,0);
 }
