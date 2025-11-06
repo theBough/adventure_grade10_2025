@@ -1,4 +1,4 @@
-let bgImageRoomOne
+let bgImageRoomOne,bgImageRoomTwo
 
 function fillRooms(){
   rooms = [
@@ -6,6 +6,7 @@ function fillRooms(){
   ]
   
   bgImageRoomOne =loadImage("images/maps/megaManMap.jpg")
+  bgImageRoomTwo =loadImage("images/maps/megamanBackground.png")
 }//end function
 
 function roomChange(){
@@ -26,6 +27,8 @@ function roomChange(){
 function roomTwo(){
   w=[];
   w.push(new Wall(0,235,400,20,"black"))
+   bgImageRoomTwo.resize(width, height)
+   image(bgImageRoomTwo,0,0);
 }
 function roomOne(){
   w=[];
